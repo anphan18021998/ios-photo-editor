@@ -39,21 +39,21 @@ public final class PhotoEditorViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     
-    public var image: UIImage?
+    @objc public var image: UIImage?
     /**
      Array of Stickers -UIImage- that the user will choose from
      */
-    public var stickers : [UIImage] = []
+    @objc public var stickers : [UIImage] = []
     /**
      Array of Colors that will show while drawing or typing
      */
-    public var colors  : [UIColor] = []
+    @objc public var colors  : [UIColor] = []
     
-    public var photoEditorDelegate: PhotoEditorDelegate?
+    @objc public var photoEditorDelegate: PhotoEditorDelegate?
     var colorsCollectionViewDelegate: ColorsCollectionViewDelegate!
     
     // list of controls to be hidden
-    public var hiddenControls : [control] = []
+    @objc public var hiddenControls : [control] = []
     
     var stickersVCIsVisible = false
     var drawColor: UIColor = UIColor.black
