@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - Control
-public enum control {
+public enum control: String {
     case crop
     case sticker
     case draw
@@ -18,6 +18,40 @@ public enum control {
     case save
     case share
     case clear
+
+    public func string() -> String {
+        return self.rawValue
+    }
+}
+
+@objc public class ControlBridge: NSObject {
+    class func Crop() -> NSString {
+        return control.crop.string() as NSString
+    }
+    
+    class func Sticker() -> NSString {
+        return control.sticker.string() as NSString
+    }
+
+    class func Draw() -> NSString {
+        return control.draw.string() as NSString
+    }
+
+    class func Text() -> NSString {
+        return control.text.string() as NSString
+    }
+
+    class func Save() -> NSString {
+        return control.save.string() as NSString
+    }
+
+    class func Share() -> NSString {
+        return control.share.string() as NSString
+    }
+
+    class func Clear() -> NSString {
+        return control.clear.string() as NSString
+    }
 }
 
 extension PhotoEditorViewController {
@@ -115,23 +149,24 @@ extension PhotoEditorViewController {
     }
     
     func hideControls() {
-        for control in hiddenControls {
+        for control in controls {
             switch control {
-                
-            case .clear:
+            case ControlBridge.Clear():
                 clearButton.isHidden = true
-            case .crop:
+            case ControlBridge.Crop():
                 cropButton.isHidden = true
-            case .draw:
+            case ControlBridge.Draw():
                 drawButton.isHidden = true
-            case .save:
+            case ControlBridge.Save():
                 saveButton.isHidden = true
-            case .share:
+            case ControlBridge.Share():
                 shareButton.isHidden = true
-            case .sticker:
+            case ControlBridge.Sticker():
                 stickerButton.isHidden = true
-            case .text:
-                stickerButton.isHidden = true
+            case ControlBridge.Text():
+                textButton.isHidden = true
+            default:
+                textButton.isHidden = true
             }
         }
     }
