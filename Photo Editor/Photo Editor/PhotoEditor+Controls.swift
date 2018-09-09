@@ -126,19 +126,19 @@ extension PhotoEditorViewController {
         var controls = hiddenControls
         
         for control in controls {
-            if (control == ControlBridge.Clear()) {
+            if (control == "clear") {
                 clearButton.isHidden = true
-            } else if (control == ControlBridge.Crop()) {
+            } else if (control == "crop") {
                 cropButton.isHidden = true
-            } else if (control == ControlBridge.Draw()) {
+            } else if (control == "draw") {
                 drawButton.isHidden = true
-            } else if (control == ControlBridge.Save()) {
+            } else if (control == "save") {
                 saveButton.isHidden = true
-            } else if (control == ControlBridge.Share()) {
+            } else if (control == "share") {
                 shareButton.isHidden = true
-            } else if (control == ControlBridge.Sticker()) {
+            } else if (control == "sticker") {
                 stickerButton.isHidden = true
-            } else if (control == ControlBridge.Text()) {
+            } else if (control == "text") {
                 textButton.isHidden = true
             }
         }
