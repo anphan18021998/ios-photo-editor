@@ -53,7 +53,7 @@ public final class PhotoEditorViewController: UIViewController {
     var colorsCollectionViewDelegate: ColorsCollectionViewDelegate!
     
     // list of controls to be hidden
-    @objc public var hiddenControls : [ControlBridge] = []
+    @objc public var hiddenControls : [NSString] = []
 
     var stickersVCIsVisible = false
     var drawColor: UIColor = UIColor.black
