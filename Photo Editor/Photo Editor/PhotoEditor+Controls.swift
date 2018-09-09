@@ -121,8 +121,11 @@ extension PhotoEditorViewController {
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
         let activity = UIActivityViewController(activityItems: [canvasView.toImage()], applicationActivities: nil)
-        present(activity, animated: true, completion: nil)
-        
+        if let popoverController = activity.popoverPresentationController {
+            popoverController.barButtonItem = UIBarButtonItem(customView: sender)
+        }
+
+        present(activity, animated: true, completion: nil)        
     }
     
     @IBAction func clearButtonTapped(_ sender: AnyObject) {
