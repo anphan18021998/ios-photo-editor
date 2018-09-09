@@ -24,36 +24,6 @@ public enum control: String {
     }
 }
 
-@objc public class ControlBridge: NSObject {
-    class func Crop() -> NSString {
-        return control.crop.string() as NSString
-    }
-    
-    class func Sticker() -> NSString {
-        return control.sticker.string() as NSString
-    }
-
-    class func Draw() -> NSString {
-        return control.draw.string() as NSString
-    }
-
-    class func Text() -> NSString {
-        return control.text.string() as NSString
-    }
-
-    class func Save() -> NSString {
-        return control.save.string() as NSString
-    }
-
-    class func Share() -> NSString {
-        return control.share.string() as NSString
-    }
-
-    class func Clear() -> NSString {
-        return control.clear.string() as NSString
-    }
-}
-
 extension PhotoEditorViewController {
 
      //MARK: Top Toolbar
@@ -125,7 +95,8 @@ extension PhotoEditorViewController {
             popoverController.barButtonItem = UIBarButtonItem(customView: sender)
         }
 
-        present(activity, animated: true, completion: nil)        
+        present(activity, animated: true, completion: nil)
+        
     }
     
     @IBAction func clearButtonTapped(_ sender: AnyObject) {
@@ -138,8 +109,8 @@ extension PhotoEditorViewController {
     }
     
     @IBAction func continueButtonPressed(_ sender: Any) {
-        let img = self.canvasView.toImage()
-        photoEditorDelegate?.doneEditing(image: img)
+        let image = self.canvasView.toImage()
+        photoEditorDelegate?.doneEditing(image: image)
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -152,26 +123,24 @@ extension PhotoEditorViewController {
     }
     
     func hideControls() {
+        var controls = hiddenControls
+        
         for control in controls {
-            switch control {
-            case ControlBridge.Clear():
+            if (control == ControlBridge.Clear()) {
                 clearButton.isHidden = true
-            case ControlBridge.Crop():
+            } else if (control == ControlBridge.Crop()) {
                 cropButton.isHidden = true
-            case ControlBridge.Draw():
+            } else if (control == ControlBridge.Draw()) {
                 drawButton.isHidden = true
-            case ControlBridge.Save():
+            } else if (control == ControlBridge.Save()) {
                 saveButton.isHidden = true
-            case ControlBridge.Share():
+            } else if (control == ControlBridge.Share()) {
                 shareButton.isHidden = true
-            case ControlBridge.Sticker():
+            } else if (control == ControlBridge.Sticker()) {
                 stickerButton.isHidden = true
-            case ControlBridge.Text():
-                textButton.isHidden = true
-            default:
+            } else if (control == ControlBridge.Text()) {
                 textButton.isHidden = true
             }
         }
     }
-    
 }
