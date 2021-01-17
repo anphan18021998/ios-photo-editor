@@ -91,7 +91,7 @@ open class CropViewController: UIViewController {
         
         if self.toolbarItems == nil {
             let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let constrainButton = UIBarButtonItem(title: "Constrain", style: .plain, target: self, action: #selector(CropViewController.constrain(_:)))
+            let constrainButton = UIBarButtonItem(title: "尺寸", style: .plain, target: self, action: #selector(CropViewController.constrain(_:)))
             toolbarItems = [flexibleSpace, constrainButton, flexibleSpace]
         }
         
@@ -145,7 +145,7 @@ open class CropViewController: UIViewController {
     
     @objc func constrain(_ sender: UIBarButtonItem) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let original = UIAlertAction(title: "Original", style: .default) { [unowned self] action in
+        let original = UIAlertAction(title: "原始", style: .default) { [unowned self] action in
             guard let image = self.cropView?.image else {
                 return
             }
@@ -165,7 +165,7 @@ open class CropViewController: UIViewController {
             self.cropView?.cropRect = cropRect
         }
         actionSheet.addAction(original)
-        let square = UIAlertAction(title: "Square", style: .default) { [unowned self] action in
+        let square = UIAlertAction(title: "正方形", style: .default) { [unowned self] action in
             let ratio: CGFloat = 1.0
 //            self.cropView?.cropAspectRatio = ratio
             if var cropRect = self.cropView?.cropRect {
@@ -213,7 +213,7 @@ open class CropViewController: UIViewController {
             }
         }
         actionSheet.addAction(widescreen)
-        let cancel = UIAlertAction(title: "Cancel", style: .default) { [unowned self] action in
+        let cancel = UIAlertAction(title: "取消", style: .default) { [unowned self] action in
             self.dismiss(animated: true, completion: nil)
         }
         actionSheet.addAction(cancel)
