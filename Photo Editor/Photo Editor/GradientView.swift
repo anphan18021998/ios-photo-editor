@@ -14,15 +14,16 @@ class GradientView: UIView {
     
     var gradientLayer = CAGradientLayer()
 
-    override func awakeFromNib() {
+  override func awakeFromNib() {
         super.awakeFromNib()
         if gradientFromtop == false {
-            gradientLayer.colors = [UIColor.clear.cgColor, UIColor(white: 0.0, alpha: 0.5).cgColor]
+            gradientLayer.colors = [UIColor.clear.cgColor,UIColor(white: 0.0, alpha: 0.5).cgColor, UIColor(white: 0.0, alpha: 0.8).cgColor]
+           
         } else {
-            gradientLayer.colors = [UIColor(white: 0.0, alpha: 0.5).cgColor, UIColor.clear.cgColor]
+            gradientLayer.colors = [UIColor(white: 0.0, alpha: 0.8).cgColor,UIColor(white: 0.0, alpha: 0.5).cgColor, UIColor.clear.cgColor]
         }
 
-        gradientLayer.locations = [NSNumber(value: 0.0 as Float), NSNumber(value: 1.0 as Float)]
+        gradientLayer.locations = [NSNumber(value: 0.0 as Float),NSNumber(value: 0.8 as Float), NSNumber(value: 1.0 as Float)]
         backgroundColor = UIColor.clear
         layer.addSublayer(gradientLayer)
     }
