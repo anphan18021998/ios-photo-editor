@@ -133,9 +133,9 @@ public final class PhotoEditorViewController: UIViewController {
     
     func hideToolbar(hide: Bool) {
         topToolbar.isHidden = hide
-        topGradient.isHidden = hide
+       // topGradient.isHidden = hide
         bottomToolbar.isHidden = hide
-        bottomGradient.isHidden = hide
+       // bottomGradient.isHidden = hide
     }
 }
 
